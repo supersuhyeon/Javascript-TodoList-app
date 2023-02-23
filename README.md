@@ -2,25 +2,27 @@
 
 ![ezgif com-crop (7)](https://user-images.githubusercontent.com/94214512/220997763-a3b185c0-b413-4c69-9acf-72d50cd0064d.gif)
 
-I did todolist project before with react but this time, would like to make with Javascript and scss. <br>
-[React version todolist](https://github.com/supersuhyeon/React-TodoList-app)
+I previously made a to-do list app using React. However, this time I wanted to practice making the app using JavaScript and SCSS.
+<br>
+[To-do list React version](https://github.com/supersuhyeon/React-TodoList-app)
 
 ### Goals of the project
 
-1. create hash-based Routing system
-2. connect with local storage
+1. Create hash-based Routing system
+2. Connect with local storage
+3. Create a CRUD(Create, Read, Update, Delete) app with plain Javascript
 
 ### Languages
 
-html, scss, javascript rollup
+HTML, SCSS, JavaScript, rollup
 
 ### Featuers
 
-**How to make a router in Javascript**
+**How to make a router in JavaScript**
 
-In general, It is recommended to use a JavaScript library or framework to manage the routing of your web application like React router in React. However, you can also implement routing using only JavaScript. this approach seems to be simple and straightforward but it may not be suitable for managing complex routing rules in large projects.
+In general, it is recommended to use a JavaScript library or framework to manage the routing of your web application like React router in React. However, you can also implement routing using only JavaScript. This approach seems to be simple and straightforward but it may not be suitable for managing complex routing rules in large projects.
 
-there are many different ways to make a routing system and I used the Hash-based Routing in this project.
+There are many different ways to make a routing system and I used hash-based routing in this project.
 
 - Hash-based Routing<br>
   Hash-based routing is a method of routing pages using the hash portion of a URL. A hash is the part of a URL that follows the # character. Browsers do not reload pages when the hash portion of the URL changes, so you can use hash-based routing to dynamically change pages.
@@ -65,7 +67,7 @@ router.route("/invalid");
 class TodoList {
   //...codes
   onClickRadioBtn(e) {
-    //when the radio buttons are clicked (ALL,TODO,DONE)
+    //when the radio buttons are clicked (ALL, TODO, DONE)
     const target = e.target;
     window.location.href = `#/${target.value.toLowerCase()}`; //If the hash is changed, the init() method from Router class is re-executed.
   }
@@ -142,15 +144,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 ```
 
-- method chaning
-  Using method chaining, methods can be called continuously centering on one object, so the object returned by the previous method can be used again in the next method. for example router.addRoute(...).setNotFound(...).init(). Using method chaining in this way, you can write concise and highly readable code.
+- Method Chaining <br>
+  Using method chaining, methods can be called continuously centering on one object, so the object returned by the previous method can be used again in the next method. For example router.addRoute(...).setNotFound(...).init(). Using method chaining in this way, you can write concise and highly readable code.
 
-2. local storage
+---
+
+**Local Storage** <br>
 
 - window.localStorage.setItem(key,value) - To add key and value
 - window.localStorage.getItem(key) - To read the value
-- Only strings are stored in localStorage. Therefore, to store an object or an array in localStorage,
-  you need to convert the object to a string and store it. JSON.stringify() converts objects and arrays to JSON strings.
+- Only strings are stored in localStorage. Therefore, to store an object or an array in localStorage, you need to convert the object to a string and store it. JSON.stringify() converts objects and arrays to JSON strings.
 - When you convert JSON strings to objects or arrays, you can use JSON.parse()
 
   <img width="1271" alt="Screenshot 2023-02-22 at 5 45 03 PM" src="https://user-images.githubusercontent.com/94214512/220803718-0fcf2cca-a196-4fe3-88a4-303dfa1ca1f2.png">
@@ -169,7 +172,7 @@ class TodoList {
   }
 
   loadSavedData() {
-    //load and display the data when dom content are loaded.
+    //load and display the data when dom content is loaded.
     const todosData = this.storage.getTodos();
     for (const todoData of todosData) {
       const { id, content, status } = todoData;
@@ -208,7 +211,7 @@ class Storage {
 
   getTodos() {
     //get the data from the localstorage
-    return localStorage.getItem("todos") === null //if getItem cant find a data then returns null
+    return localStorage.getItem("todos") === null //if getItem can't find data then null is returned
       ? []
       : JSON.parse(localStorage.getItem("todos"));
   }
@@ -221,6 +224,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 ### Self-reflection
 
-this time, i would like to make a project TODOLIST without library or framework.
-and i realized that how efficient and convienent it was when i make a router in react with react-router library.
-also thesedays, i am trying to use all different module bundlers like parcel, webpack, rollup etc and to be honest while setting up the basic enviornment with rollup, I just thought that this is very similar to webpack. well obviously my project is too small for using rollup or webpack but hopefully i could see and feel the big difference in a big scale project oneday.
+I wanted to make the to-do list app this time without libraries or frameworks. With this rule in mind, I realized how efficient and convenient it is to make a router in React with react-router library. In addition to challenging myself with that rule, I've also been trying to use all different kinds of module bundlers like parcel, webpack, and rollup. I felt from this project that when setting up the basic environment with rollup that rollup was very similar to webpack. Of course my project is too small for how rollup or webpack are intended to be used but I could see and feel the big differences for a future large-scale project.
